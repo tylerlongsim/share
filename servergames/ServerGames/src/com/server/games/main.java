@@ -9,14 +9,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class main extends JavaPlugin{
 	
 	public ArrayList<String> joined = new ArrayList<String>();
-	public Location map;
 	public Location playerjoinloc;
+	public LevelGeneratorListener lgl;
 	
 	public void onEnable(){
 		LevelGeneratorListener lis = new LevelGeneratorListener(this);
 		
 		PluginManager pm = this.getServer().getPluginManager();
-		pm.registerEvents(new LevelGeneratorListener(this), this);
+		lgl = new LevelGeneratorListener(this);
 		
 		this.getCommand("Hex").setExecutor(new LevelGeneratorCommands(this, lis));
 	}

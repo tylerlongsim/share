@@ -13,40 +13,21 @@ public class LevelGeneratorListener implements Listener{
 	public int task;
 	
 	public main plugin;
+	Location loc;
 	public LevelGeneratorListener(main p){
 		this.plugin = p;
 	}
 	
-	public void joinPads(){
-		task = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable(){
-
-			int count = 5;
-			@Override
-			public void run() {
-				
-				if(count == 5){
-					spawnPads(0, -2);
-					Bukkit.broadcastMessage(ChatColor.GREEN + "Pads Spawned!");
-				}else if(count == 4){
-					spawnPads(1, -1);
-				}else if(count == 3){
-					spawnPads(2, 0);
-				}else if(count == 2){
-					
-				}else if(count == 1){
-					
-				}else if(count == 0){
-					Bukkit.getServer().getScheduler().cancelTask(task);
-					Bukkit.broadcastMessage(ChatColor.GREEN + "The Game Is About To Begin!");
-				}
-				count --;
-			}
-			
-		}, 20L, 20L);
+	public void joinPads(Location loc){
+		this.loc = loc;			
+		spawnPads(0, -2);
+	    Bukkit.broadcastMessage(ChatColor.GREEN + "Pads Spawned!");
+	    spawnPads(1, -1);
+		spawnPads(2, 0);											
+		Bukkit.broadcastMessage(ChatColor.GREEN + "The Game Is About To Begin!");			
 	}
 	
 	public final void spawnPads(int distance, int height){
-		Location loc = plugin.map;
 		Location loc1 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY() + height, loc.getBlockZ()).getLocation();
 		Location loc2 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY() + height, loc.getBlockZ()).getLocation();
 		Location loc3 = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() + height, loc.getBlockZ() +5 - distance).getLocation();

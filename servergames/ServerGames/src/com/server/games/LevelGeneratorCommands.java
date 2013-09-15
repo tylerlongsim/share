@@ -43,7 +43,6 @@ public class LevelGeneratorCommands implements CommandExecutor{
 						player.sendMessage(ChatColor.GOLD + "You Are Now Ready, The Game Will Begin Shortly!");
 					}else if(args[0].equalsIgnoreCase("Start")){
 						if(player.isOp()){
-							lis.joinPads();
 							Bukkit.broadcastMessage(ChatColor.GOLD + "The Games Have Begun!");
 						}else{
 							player.sendMessage(ChatColor.DARK_RED + "You Dont Have The Needed Permissions");
@@ -51,7 +50,7 @@ public class LevelGeneratorCommands implements CommandExecutor{
 					}else if(args[0].equalsIgnoreCase("Create")){
 						if(player.isOp()){
 							player.sendMessage(ChatColor.GOLD + "You Have Created A Map");
-							plugin.map = player.getLocation();
+							plugin.lgl.joinPads(player.getLocation());
 						}else{
 							player.sendMessage(ChatColor.DARK_RED + "You Dont Have The Needed Permissions");
 						}
