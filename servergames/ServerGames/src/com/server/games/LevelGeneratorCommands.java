@@ -32,8 +32,13 @@ public class LevelGeneratorCommands implements CommandExecutor{
 					}
 				}else if(args.length == 1){
 					if(args[0].equalsIgnoreCase("Join")){
-						player.sendMessage(ChatColor.GOLD + "You Have Join The Hex MiniGame!");
-						plugin.joined.add(player.getName());
+						if(plugin.joined.size() > 4){
+							player.sendMessage(ChatColor.RED + "This Gamemode Is At Full Capacity!");
+						}else{
+							plugin.joined.add(player.getName());
+							player.sendMessage(ChatColor.GOLD + "You Have Join The Hex MiniGame!");
+						}
+						plugin.playerjoinloc = player.getLocation();
 					}else if(args[0].equalsIgnoreCase("Ready")){
 						player.sendMessage(ChatColor.GOLD + "You Are Now Ready, The Game Will Begin Shortly!");
 					}else if(args[0].equalsIgnoreCase("Start")){
@@ -59,9 +64,12 @@ public class LevelGeneratorCommands implements CommandExecutor{
 					}
 				}else if(args.length == 2){
 					if(args[0].equalsIgnoreCase("Kick")){
-						if(Bukkit.getServer().getPlayer(args[1]) !=null){
+						if(Bukkit.getServer().getPlayer(args[1]) !=null && plugin.joined.contains(player.getName())){
 							Player target = Bukkit.getServer().getPlayer(args[1]);
 							plugin.joined.remove(target.getName());
+							target.teleport(plugin.playerjoinloc);
+						}else{
+							player.sendMessage(ChatColor.RED + "This Person Is Either Not Online Or Is Not InGame!");
 						}
 					}
 				}

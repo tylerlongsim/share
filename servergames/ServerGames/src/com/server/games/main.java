@@ -10,6 +10,7 @@ public class main extends JavaPlugin{
 	
 	public ArrayList<String> joined = new ArrayList<String>();
 	public Location map;
+	public Location playerjoinloc;
 	
 	public void onEnable(){
 		LevelGeneratorListener lis = new LevelGeneratorListener(this);

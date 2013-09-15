@@ -25,12 +25,12 @@ public class LevelGeneratorListener implements Listener{
 			public void run() {
 				
 				if(count == 5){
-					spawnPads(0);
+					spawnPads(0, -2);
 					Bukkit.broadcastMessage(ChatColor.GREEN + "Pads Spawned!");
 				}else if(count == 4){
-					spawnPads(1);
+					spawnPads(1, -1);
 				}else if(count == 3){
-					spawnPads(2);
+					spawnPads(2, 0);
 				}else if(count == 2){
 					
 				}else if(count == 1){
@@ -45,17 +45,17 @@ public class LevelGeneratorListener implements Listener{
 		}, 20L, 20L);
 	}
 	
-	public final void spawnPads(int distance){
+	public final void spawnPads(int distance, int height){
 		Location loc = plugin.map;
-		Location loc1 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY(), loc.getBlockZ()).getLocation();
-		Location loc2 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY(), loc.getBlockZ()).getLocation();
-		Location loc3 = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() +5 - distance).getLocation();
-		Location loc4 = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ() -5 + distance).getLocation();
+		Location loc1 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY() + height, loc.getBlockZ()).getLocation();
+		Location loc2 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY() + height, loc.getBlockZ()).getLocation();
+		Location loc3 = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() + height, loc.getBlockZ() +5 - distance).getLocation();
+		Location loc4 = loc.getWorld().getBlockAt(loc.getBlockX(), loc.getBlockY() + height, loc.getBlockZ() -5 + distance).getLocation();
 		
-		Location loc5 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY(), loc.getBlockZ() -5 + distance).getLocation();
-		Location loc6 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY(), loc.getBlockZ() - 5 + distance).getLocation();
-		Location loc7 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY(), loc.getBlockZ() +5 - distance).getLocation();
-		Location loc8 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY(), loc.getBlockZ() +5 - distance).getLocation();
+		Location loc5 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY() + height, loc.getBlockZ() -5 + distance).getLocation();
+		Location loc6 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY() + height, loc.getBlockZ() - 5 + distance).getLocation();
+		Location loc7 = loc.getWorld().getBlockAt(loc.getBlockX() -5 + distance, loc.getBlockY() + height, loc.getBlockZ() +5 - distance).getLocation();
+		Location loc8 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY() + height, loc.getBlockZ() +5 - distance).getLocation();
 		
 		this.populatePads(loc, Material.STONE);
 		this.populatePads(loc1, Material.DIRT);
