@@ -10,8 +10,10 @@ import org.bukkit.entity.Player;
 public class LevelGeneratorCommands implements CommandExecutor{
 	
 	public main plugin;
-	public LevelGeneratorCommands(main p){
+	public LevelGeneratorListener lis;
+	public LevelGeneratorCommands(main p, LevelGeneratorListener lis){
 		this.plugin = p;
+		this.lis = lis;
 	}
 
 	@Override
@@ -36,13 +38,14 @@ public class LevelGeneratorCommands implements CommandExecutor{
 						player.sendMessage(ChatColor.GOLD + "You Are Now Ready, The Game Will Begin Shortly!");
 					}else if(args[0].equalsIgnoreCase("Start")){
 						if(player.isOp()){
-							
+							lis.joinPads();
+							Bukkit.broadcastMessage(ChatColor.GOLD + "The Games Have Begun!");
 						}else{
 							player.sendMessage(ChatColor.DARK_RED + "You Dont Have The Needed Permissions");
 						}
 					}else if(args[0].equalsIgnoreCase("Create")){
 						if(player.isOp()){
-							
+							plugin.map = player.getLocation();
 						}else{
 							player.sendMessage(ChatColor.DARK_RED + "You Dont Have The Needed Permissions");
 						}
