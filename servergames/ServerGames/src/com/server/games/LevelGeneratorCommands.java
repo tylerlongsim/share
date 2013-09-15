@@ -45,6 +45,7 @@ public class LevelGeneratorCommands implements CommandExecutor{
 						}
 					}else if(args[0].equalsIgnoreCase("Create")){
 						if(player.isOp()){
+							player.sendMessage(ChatColor.GOLD + "You Have Created A Map");
 							plugin.map = player.getLocation();
 						}else{
 							player.sendMessage(ChatColor.DARK_RED + "You Dont Have The Needed Permissions");

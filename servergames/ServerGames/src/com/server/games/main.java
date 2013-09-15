@@ -11,7 +11,7 @@ public class main extends JavaPlugin{
 	public ArrayList<String> joined = new ArrayList<String>();
 	public Location map;
 	
-	public void enable(){
+	public void onEnable(){
 		LevelGeneratorListener lis = new LevelGeneratorListener(this);
 		
 		PluginManager pm = this.getServer().getPluginManager();
@@ -19,7 +19,7 @@ public class main extends JavaPlugin{
 		
 		this.getCommand("Hex").setExecutor(new LevelGeneratorCommands(this, lis));
 	}
-	public void disable(){
+	public void onDisable(){
 		
 	}
 
