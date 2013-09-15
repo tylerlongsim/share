@@ -1,0 +1,7 @@
+main: com.server.games.main
+name: ServerGames
+version: 0.0.1
+authers: [callum2904, tyler_long_sim]
+commands:
+    Hex:
+        description: Main Server Command!
