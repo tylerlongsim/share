@@ -39,7 +39,7 @@ public class LevelGeneratorListener implements Listener{
 		Location loc8 = loc.getWorld().getBlockAt(loc.getBlockX() +5 - distance, loc.getBlockY() + height, loc.getBlockZ() +5 - distance).getLocation();
 		
 		this.populatePads(loc, Material.STONE);
-		this.populatePads(loc1, Material.DIRT);
+		this.populatePads(loc1, Material.EMERALD_BLOCK);
 		this.populatePads(loc2, Material.SANDSTONE);
 		this.populatePads(loc3, Material.GRASS);
 		this.populatePads(loc4, Material.WOOD);
