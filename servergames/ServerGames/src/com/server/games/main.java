@@ -15,6 +15,9 @@ public class main extends JavaPlugin{
 		
 		
 		this.getCommand("Hex").setExecutor(new LevelGeneratorCommands(this, lis));
+		
+		 getConfig().options().copyDefaults(true);        
+         saveConfig();
 	}
 	public void onDisable(){
 		

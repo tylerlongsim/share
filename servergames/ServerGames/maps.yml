@@ -1,0 +1,21 @@
+#this is the config file for the guns.please lay the guns out like the example one in this file. when making
+#a new gun do not include gun and the gun id have to up in 1's. 
+
+maps:
+  '0':
+    matId: 280
+    name: MP5
+    explode: false
+    damage: 1
+    mag: 31
+    ammo: 231
+  '1':
+    matId: 278
+    name: AK47
+    explode: true
+    damage: 5
+    mag: 29
+    ammo: 229
+    
+
+    
