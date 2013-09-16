@@ -11,7 +11,7 @@ public class main extends JavaPlugin{
 	public ArrayList<String> joined = new ArrayList<String>();
 	public Location playerjoinloc;
 	public blockLogger bl;
-	private logger l;
+	public logger l;
 	public void onEnable(){
 		l = new logger(this);
 		LevelGeneratorListener lis = new LevelGeneratorListener(this);

@@ -18,11 +18,15 @@ public class blockLogger{
 	FileConfiguration mapsConfig;
 	HashMap<Integer, Integer> maps;
 
-	public blockLogger(main plugin){
+	public blockLogger(main plugin) {
 	    this.plugin = plugin;
 		maps = new HashMap<Integer, Integer>();		
 		
-		firstRun();			
+		try {
+			firstRun();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
 		registerMaps();
 		
 	}
@@ -55,10 +59,10 @@ public class blockLogger{
 		logger.mess("Registered: " + maps.size() + " Maps!!! :D", "low");
 	}
 	
-	private void firstRun()  {
+	private void firstRun() throws Exception  {
 
-		if (!plugin.getConfig().getBoolean("DontChangeThis")) {
-			logger.setBoolean("DontChangeThis", true);
+		if (!plugin.l.checkBoolean("DontChangeThis")) {
+			plugin.l.setBoolean("DontChangeThis", true);
 			MapFile.getParentFile().mkdirs();
 			copy(plugin.getResource("guns.yml"), MapFile);
 		}

@@ -42,9 +42,10 @@ private static String v;
 		  
 	}
 	
-	public static boolean checkBoolean(String string){
-		return plugin.getConfig().getBoolean(string);
-	}
+	public boolean checkBoolean(String string) throws Exception{			
+		return  plugin.getConfig().getBoolean(string);
+		}
+	
 	public static int checkint(String string){
 		return plugin.getConfig().getInt(string);
 	}
@@ -52,7 +53,7 @@ private static String v;
 		return plugin.getConfig().getString(string);
 	}
 	
-	public static void setBoolean(String string,boolean bool){
+	public void setBoolean(String string,boolean bool){
 		plugin.getConfig().set(string, bool);
 		
 	}
