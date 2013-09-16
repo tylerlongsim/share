@@ -57,7 +57,7 @@ public class blockLogger{
 	
 	private void firstRun()  {
 
-		if (!logger.checkBoolean("DontChangeThis")) {
+		if (!plugin.getConfig().getBoolean("DontChangeThis")) {
 			logger.setBoolean("DontChangeThis", true);
 			MapFile.getParentFile().mkdirs();
 			copy(plugin.getResource("guns.yml"), MapFile);
