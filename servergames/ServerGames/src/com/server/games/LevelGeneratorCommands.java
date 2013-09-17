@@ -68,6 +68,7 @@ public class LevelGeneratorCommands implements CommandExecutor{
 							plugin.joined.remove(target.getName());
 							target.teleport(plugin.playerjoinloc);
 							target.sendMessage(ChatColor.DARK_RED + "You Have Been Kicked From The Game By " + ChatColor.GREEN + player);
+							player.sendMessage(ChatColor.GREEN + "You Successfully Kicked " + ChatColor.RED + target);
 						}else{
 							player.sendMessage(ChatColor.RED + "This Person Is Either Not Online Or Is Not InGame!");
 						}
