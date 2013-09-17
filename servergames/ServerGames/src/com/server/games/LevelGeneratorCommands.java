@@ -67,6 +67,7 @@ public class LevelGeneratorCommands implements CommandExecutor{
 							Player target = Bukkit.getServer().getPlayer(args[1]);
 							plugin.joined.remove(target.getName());
 							target.teleport(plugin.playerjoinloc);
+							target.sendMessage(ChatColor.DARK_RED + "You Have Been Kicked From The Game By " + ChatColor.GREEN + player);
 						}else{
 							player.sendMessage(ChatColor.RED + "This Person Is Either Not Online Or Is Not InGame!");
 						}
@@ -84,6 +85,9 @@ public class LevelGeneratorCommands implements CommandExecutor{
 		player.sendMessage(ChatColor.BLUE + "/Hex Start " + ChatColor.WHITE + "- Force The Game To Start!");
 		player.sendMessage(ChatColor.BLUE + "/Hex Create " + ChatColor.WHITE + "- Create A New Map At Your Current Location!");
 		player.sendMessage(ChatColor.BLUE + "/Hex Kick <Player> " + ChatColor.WHITE + "- Kick A Player From The Game!");
+		player.sendMessage(ChatColor.GOLD + "-=-=-=-=-=-= " + ChatColor.RED + "Hex MiniGames - User" + ChatColor.GOLD + " =-=-=-=-=-=-");
+		player.sendMessage(ChatColor.BLUE + "/Hex Join " + ChatColor.WHITE + "- Join The Hex MiniGame!");
+		player.sendMessage(ChatColor.BLUE + "/Hex Ready " + ChatColor.WHITE + "- Ready Up To Start The Game!");
 	}
 	
 	public void sendHexHelpMsg(Player player){
