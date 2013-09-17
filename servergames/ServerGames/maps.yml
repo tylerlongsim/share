@@ -3,19 +3,13 @@
 
 maps:
   '0':
-    matId: 280
-    name: MP5
-    explode: false
-    damage: 1
-    mag: 31
-    ammo: 231
+    x:
+    y:
+    z:
   '1':
-    matId: 278
-    name: AK47
-    explode: true
-    damage: 5
-    mag: 29
-    ammo: 229
+    x:
+    y:
+    z:
     
 
     

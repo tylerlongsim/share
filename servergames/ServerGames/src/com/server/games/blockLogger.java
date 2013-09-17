@@ -21,12 +21,7 @@ public class blockLogger{
 	public blockLogger(main plugin) {
 	    this.plugin = plugin;
 		maps = new HashMap<Integer, Integer>();		
-		
-		try {
-			firstRun();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}			
+				
 		registerMaps();
 		
 	}
@@ -38,20 +33,22 @@ public class blockLogger{
 		int i = 0;
         int u = 0;
         
-		ConfigurationSection gunsection = mapsConfig.getConfigurationSection("gun");
-        if(gunsection ==  null)
+		ConfigurationSection mapsection = mapsConfig.getConfigurationSection("maps");
+        if(mapsection ==  null)
         {
-            gunsection = mapsConfig.createSection("gun");
+            mapsection = mapsConfig.createSection("maps");
         }        
-        for(String key : gunsection.getKeys(false))
+        for(String key : mapsection.getKeys(false))
         {
-            String name = gunsection.getString(key+".name", "");
-            if(!name.isEmpty())
+            int x = mapsection.getInt(key+".x");
+            int y = mapsection.getInt(key+".y");
+            int z = mapsection.getInt(key+".z");
+            if(!x.isEmpty())
             {       
            	 
            	 u++;
            	 i=u-1;
-           	 maps.put(i, gunsection.getInt(key+".matId"));              
+           	 maps.put(i, mapsection.getInt(key+"."));              
                 
             }
         }         
@@ -64,7 +61,7 @@ public class blockLogger{
 		if (!plugin.l.checkBoolean("DontChangeThis")) {
 			plugin.l.setBoolean("DontChangeThis", true);
 			MapFile.getParentFile().mkdirs();
-			copy(plugin.getResource("guns.yml"), MapFile);
+			copy(plugin.getResource("maps.yml"), MapFile);
 		}
 	}
 	
