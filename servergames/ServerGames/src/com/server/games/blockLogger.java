@@ -16,17 +16,20 @@ public class blockLogger{
 	main plugin;
 	File MapFile;
 	FileConfiguration mapsConfig;
-	HashMap<Integer, Integer> maps;
+	HashMap<Integer, String> loc_1_maps;
+	HashMap<Integer, String> loc_2_maps;
+
 
 	public blockLogger(main plugin) {
 	    this.plugin = plugin;
-		maps = new HashMap<Integer, Integer>();		
-				
+		loc_1_maps = new HashMap<Integer, String>();		
+		loc_2_maps = new HashMap<Integer, String>();		
+
 		registerMaps();
 		
 	}
 	
-	public void registerMaps() {
+	public void registerMaps() {		
 		startFileLoad();
 		loadYamls();
 		
@@ -40,20 +43,25 @@ public class blockLogger{
         }        
         for(String key : mapsection.getKeys(false))
         {
-            int x = mapsection.getInt(key+".x");
-            int y = mapsection.getInt(key+".y");
-            int z = mapsection.getInt(key+".z");
-            if(!x.isEmpty())
-            {       
-           	 
+            String x1 = mapsection.getString(key+".x1");
+            String y1 = mapsection.getString(key+".y1");
+            String z1 = mapsection.getString(key+".z1");
+            
+            String x2 = mapsection.getString(key+".x2");
+            String y2 = mapsection.getString(key+".y2");
+            String z2 = mapsection.getString(key+".z2");
+            
+            if(!x1.isEmpty()&&!y1.isEmpty()&&z1.isEmpty()&&x2.isEmpty()&&y2.isEmpty()&&z2.isEmpty())
+            {                  	 
            	 u++;
-           	 i=u-1;
-           	 maps.put(i, mapsection.getInt(key+"."));              
+           	 i=u-1;           	
+           	 loc_1_maps.put(i,mapsection.getString(key+".x1")+","+mapsection.getString(key+".y1")+","+mapsection.getString(key+".z1"));
+           	 loc_2_maps.put(i,mapsection.getString(key+".x2")+","+mapsection.getString(key+".y2")+","+mapsection.getString(key+".z2"));
                 
             }
         }         
 
-		logger.mess("Registered: " + maps.size() + " Maps!!! :D", "low");
+		logger.mess("Registered: " + loc_1_maps.size() + " Maps!!! :D", "low");
 	}
 	
 	private void firstRun() throws Exception  {

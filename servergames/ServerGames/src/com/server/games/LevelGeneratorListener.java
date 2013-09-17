@@ -23,6 +23,7 @@ public class LevelGeneratorListener implements Listener{
 	public void createPads(Location location){
 		this.loc = location;
 		spawnPads(0, 0);
+		regMap();
 		Bukkit.broadcastMessage(ChatColor.BLUE + "The Games Are About To Begin!");
 	}
 	
@@ -49,7 +50,13 @@ public class LevelGeneratorListener implements Listener{
 		this.populatePads(loc8, Material.IRON_BLOCK);
 	}
 	
+	
+	public void regMap(){
+        Block block = loc.getBlock();      
+		loc.getWorld().getBlockAt(block.getX()+15,block.getY(),block.getZ()+15).getLocation();
+	}
 	public void populatePads(Location loc, Material mat){
+
         Block block = loc.getBlock();      
         loc.getWorld().getBlockAt(block.getX()+5,block.getY(),block.getZ()).setType(mat);        
         loc.getWorld().getBlockAt(block.getX()+5,block.getY(),block.getZ()+5).setType(mat);
