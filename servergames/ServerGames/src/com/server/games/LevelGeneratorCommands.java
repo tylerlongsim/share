@@ -41,6 +41,12 @@ public class LevelGeneratorCommands implements CommandExecutor{
 						plugin.playerjoinloc = player.getLocation();
 					}else if(args[0].equalsIgnoreCase("Ready")){
 						player.sendMessage(ChatColor.GOLD + "You Are Now Ready, The Game Will Begin Shortly!");
+					}else if(args[0].equalsIgnoreCase("help") || args[0].equalsIgnoreCase("?")){
+						if(player.isOp()){
+							this.sendHexAdminHelpMsg(player);
+						}else{
+							this.sendHexHelpMsg(player);
+						}
 					}else if(args[0].equalsIgnoreCase("Start")){
 						if(player.isOp()){
 							Bukkit.broadcastMessage(ChatColor.GOLD + "The Games Have Begun!");
@@ -89,12 +95,14 @@ public class LevelGeneratorCommands implements CommandExecutor{
 		player.sendMessage(ChatColor.GOLD + "-=-=-=-=-=-= " + ChatColor.RED + "Hex MiniGames - User" + ChatColor.GOLD + " =-=-=-=-=-=-");
 		player.sendMessage(ChatColor.BLUE + "/Hex Join " + ChatColor.WHITE + "- Join The Hex MiniGame!");
 		player.sendMessage(ChatColor.BLUE + "/Hex Ready " + ChatColor.WHITE + "- Ready Up To Start The Game!");
+		player.sendMessage(ChatColor.BLUE + "/Hex Help,? " + ChatColor.WHITE + "- Get A List Of Helpful Commands!");
 	}
 	
 	public void sendHexHelpMsg(Player player){
 		player.sendMessage(ChatColor.GOLD + "-=-=-=-=-=-= " + ChatColor.RED + "Hex MiniGames" + ChatColor.GOLD + " =-=-=-=-=-=-");
 		player.sendMessage(ChatColor.BLUE + "/Hex Join " + ChatColor.WHITE + "- Join The Hex MiniGame!");
 		player.sendMessage(ChatColor.BLUE + "/Hex Ready " + ChatColor.WHITE + "- Ready Up To Start The Game!");
+		player.sendMessage(ChatColor.BLUE + "/Hex Help,? " + ChatColor.WHITE + "- Get A List Of Helpful Commands!");
 	}
 
 }
